@@ -37,9 +37,17 @@ install: all
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
+	mkdir -p ~/.dwm
+	ln -sf /home/wolf/Dev/dwm/autostart.sh /home/wolf/.dwm/autostart.sh
+	ln -sf /home/wolf/Dev/dwm/autostart_blocking.sh /home/wolf/.dwm/autostart_blocking.sh
+	@echo "Symlinked autostart scripts from $(PWD) into ~/.dwm/"
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
+
+cleanlinks:
+	rm -f /home/wolf/.dwm/autostart.sh /home/wolf/.dwm/autostart_blocking.sh
+	@echo "Removed autostart symlinks"
 
 .PHONY: all clean dist install uninstall
