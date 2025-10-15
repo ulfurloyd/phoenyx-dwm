@@ -12,7 +12,7 @@ static const char dmenufont[]       = "Fira Code Nerd Font Mono:size=12";
 
 static const char *const autostart[] = {
 	"dwmblocks", NULL,
-    "picom", "--blur-background", NULL,
+    "picom", "--config", "~/.config/picom/picom.conf", NULL,
 	"sh", "-c", "~/.screenlayout/test.sh", NULL,
     "wal-bg", NULL,
 	NULL /* terminate */
