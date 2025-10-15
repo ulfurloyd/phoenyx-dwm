@@ -79,6 +79,7 @@ static const Key keys[] = {
 	{ MODKEY,                   XK_Tab,            view,           {0} },
 	{ MODKEY,                   XK_w,              killclient,     {0} },
 	{ MODKEY,                   XK_t,              togglefloating, {0} },
+	{ MODKEY,                   XK_f,              togglefullscr,  {0} },
 	{ MODKEY,                   XK_0,              view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,         XK_0,              tag,            {.ui = ~0 } },
 	{ MODKEY,                   XK_bracketleft,    focusmon,       {.i = -1 } },
