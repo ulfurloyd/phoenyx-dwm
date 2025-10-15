@@ -3,3 +3,7 @@ config.h
 dwm
 util.o
 .pc
+
+dwmblocks/build/
+dwmblocks/.cache/
+dwmblocks/compile_commands.json
