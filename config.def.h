@@ -10,6 +10,14 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fira Code Nerd Font Mono:size=12" };
 static const char dmenufont[]       = "Fira Code Nerd Font Mono:size=12";
 
+static const char *const autostart[] = {
+	"dwmblocks", NULL,
+    "picom", "--blur-background", NULL,
+	"sh", "-c", "~/.screenlayout/test.sh", NULL,
+    "wal-bg", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
