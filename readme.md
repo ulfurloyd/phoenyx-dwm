@@ -1,48 +1,19 @@
-dwm - dynamic window manager
-============================
-dwm is an extremely fast, small, and dynamic window manager for X.
+<h2 align="center">phoenyx-dwm </h2>
 
+<h2 align="center">
+    <img src="./.github/ulfurloyd.jpg" width="240" alt="ulfurloyd" />
+</h2>
 
-Requirements
-------------
-In order to build dwm you need the Xlib header files.
+## my build of dwm, the tiling wm that sucks less
+- `dwm` is an elegant, minimalist, enthusiast x11 window manager that sucks less.
+- configured entirely through modifying the source code, `dwm` is a blast to sift through, and teaches you tons about `c`.
 
+## patches
+- dwm-cool_autostart
+    - patch that implements autostart functionality controllable through `config.def.h`
+- dwm-fullgaps
+    - patch that adds controllable gaps between windows
 
-Installation
-------------
-Edit config.mk to match your local setup (dwm is installed into
-the /usr/local namespace by default).
-
-Afterwards enter the following command to build and install dwm (if
-necessary as root):
-
-    make clean install
-
-
-Running dwm
------------
-Add the following line to your .xinitrc to start dwm using startx:
-
-    exec dwm
-
-In order to connect dwm to a specific display, make sure that
-the DISPLAY environment variable is set correctly, e.g.:
-
-    DISPLAY=foo.bar:1 exec dwm
-
-(This will start dwm on display :1 of the host foo.bar.)
-
-In order to display status info in the bar, you can do something
-like this in your .xinitrc:
-
-    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
-    do
-    	sleep 1
-    done &
-    exec dwm
-
-
-Configuration
--------------
-The configuration of dwm is done by creating a custom config.h
-and (re)compiling the source code.
+## statusbar
+- standard `dwm` bar
+- using `dwmblocks-async` for status information
