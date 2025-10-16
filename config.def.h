@@ -8,7 +8,7 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 10;        /* 2 is the default spacing around the bar's font */
+static const int user_bh            = 8;        /* 2 is the default spacing around the bar's font */
 static const char *fonts[]          = { "Fira Code Nerd Font Mono:size=12" };
 static const char dmenufont[]       = "Fira Code Nerd Font Mono:size=12";
 
@@ -89,6 +89,9 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,       XK_minus,          setgaps,        {.i = -1 } },
 	{ MODKEY|ControlMask,       XK_equal,          setgaps,        {.i = +1 } },
 	{ MODKEY|ControlMask|ShiftMask,         XK_equal,          setgaps,        {.i = 0  } },
+    { MODKEY,                   XK_equal,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+    { MODKEY,                   XK_minus,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
+	{ MODKEY,                   XK_m,              spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 	TAGKEYS(                    XK_1,                              0)
 	TAGKEYS(                    XK_2,                              1)
 	TAGKEYS(                    XK_3,                              2)
