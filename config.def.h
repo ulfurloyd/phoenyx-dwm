@@ -17,6 +17,7 @@ static const char *const autostart[] = {
     "picom", NULL,
 	"sh", "-c", "~/.screenlayout/test.sh", NULL,
     "wal-bg", NULL,
+    "dunst", NULL,
 	NULL /* terminate */
 };
 
