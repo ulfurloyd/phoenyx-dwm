@@ -65,14 +65,17 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static char       dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *roficmd[] = { "rofi", "-show", "combi", "-modes", "combi", "-combi-modes", "'window,drun,run'", NULL };
+static const char *rofirun[]  = { "rofi", "-show", "run", NULL };
+static const char *rofidrun[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
+static const char *scrotcmd[] = { "scrot", "/home/wolf/Pictures/Screenshots/%Y_%m-%d_%H:%M:%S.png", "-s", NULL };
 
 static const Key keys[] = {
 	/* modifier                 key                function        argument */
-	{ MODKEY,                   XK_space,          spawn,          {.v = roficmd } },
+	{ MODKEY,                   XK_space,          spawn,          {.v = rofidrun } },
+	{ MODKEY|ShiftMask,         XK_space,          spawn,          {.v = rofirun } },
 	{ MODKEY,                   XK_Return,         spawn,          {.v = termcmd } },
 	{ MODKEY,                   XK_b,              togglebar,      {0} },
 	{ MODKEY,                   XK_n,              togglefollow,   {0} },
@@ -95,6 +98,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,         XK_bracketright,   tagmon,         {.i = +1 } },
 	{ MODKEY|ControlMask,       XK_minus,          setgaps,        {.i = -1 } },
 	{ MODKEY|ControlMask,       XK_equal,          setgaps,        {.i = +1 } },
+    { MODKEY,                   XK_F12,            spawn,          {.v = scrotcmd } },
 	{ MODKEY|ControlMask|ShiftMask,                XK_equal,       setgaps,        {.i = 0  } },
     { MODKEY,                   XK_equal,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
     { MODKEY,                   XK_minus,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
