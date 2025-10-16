@@ -4,6 +4,7 @@ dwm
 util.o
 .pc
 
+!dwmblocks/config.h
 dwmblocks/build/
 dwmblocks/.cache/
 dwmblocks/compile_commands.json
