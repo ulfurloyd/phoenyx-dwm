@@ -3,14 +3,14 @@
 #include "/home/wolf/.cache/wal/colors-wal-dwm.h"
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 8;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = { "Fira Code Nerd Font Mono:size=12" };
-static const char dmenufont[]       = "Fira Code Nerd Font Mono:size=12";
+static const unsigned int borderpx    = 1;        /* border pixel of windows */
+static const unsigned int gappx       = 5;        /* gaps between windows */
+static const unsigned int snap        = 32;       /* snap pixel */
+static const int          showbar     = 1;        /* 0 means no bar */
+static const int          topbar      = 1;        /* 0 means bottom bar */
+static const int          user_bh     = 8;        /* 2 is the default spacing around the bar's font */
+static const char         *fonts[]    = { "Fira Code Nerd Font Mono:size=12" };
+static const char         dmenufont[] = "Fira Code Nerd Font Mono:size=12";
 
 static const char *const autostart[] = {
 	"dwmblocks", NULL,
@@ -33,12 +33,17 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
+/* window following */
+#define WFACTIVE '>'
+#define WFINACTIVE 'v'
+#define WFDEFAULT WFACTIVE
+
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-static const int refreshrate = 120;  /* refresh rate (per second) for client move/resize */
+static const int   nmaster     = 1;    /* number of clients in master area */
+static const int   resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int   lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int   refreshrate = 120;  /* refresh rate (per second) for client move/resize */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -69,6 +74,7 @@ static const Key keys[] = {
 	{ MODKEY,                   XK_space,          spawn,          {.v = roficmd } },
 	{ MODKEY,                   XK_Return,         spawn,          {.v = termcmd } },
 	{ MODKEY,                   XK_b,              togglebar,      {0} },
+	{ MODKEY,                   XK_n,              togglefollow,   {0} },
 	{ MODKEY,                   XK_j,              focusstack,     {.i = +1 } },
 	{ MODKEY,                   XK_k,              focusstack,     {.i = -1 } },
 	{ MODKEY,                   XK_i,              incnmaster,     {.i = +1 } },
@@ -88,7 +94,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,         XK_bracketright,   tagmon,         {.i = +1 } },
 	{ MODKEY|ControlMask,       XK_minus,          setgaps,        {.i = -1 } },
 	{ MODKEY|ControlMask,       XK_equal,          setgaps,        {.i = +1 } },
-	{ MODKEY|ControlMask|ShiftMask,         XK_equal,          setgaps,        {.i = 0  } },
+	{ MODKEY|ControlMask|ShiftMask,                XK_equal,       setgaps,        {.i = 0  } },
     { MODKEY,                   XK_equal,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
     { MODKEY,                   XK_minus,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
 	{ MODKEY,                   XK_m,              spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
@@ -110,6 +116,7 @@ static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkFollowSymbol,      0,              Button1,        togglefollow,   {0} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
