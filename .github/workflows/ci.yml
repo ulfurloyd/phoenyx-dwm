@@ -20,6 +20,25 @@ jobs:
             libx11-dev libxrender-dev libxinerama-dev libxft-dev \
             libfontconfig-dev libfreetype6-dev libxext-dev
 
+      - name: Provide default colours that don't depend on pywal
+        run: |
+          sed -i 's#"/home/wolf/.cache/wal/colors-wal-dwm.h"#"colors-wal-dwm.h"#' config.def.h
+          cat > colors-wal-dwm.h <<'EOF'
+            #ifndef COLORS_WAL_DWM_H
+            #define COLORS_WAL_DWM_H
+
+            static const char normfgcolor[] = "#bbbbbb";
+            static const char normbgcolor[] = "#222222";
+            static const char normbordercolor[] = "#444444";
+
+            static const char selfgcolor[] = "#eeeeee";
+            static const char selbgcolor[] = "#005577";
+            static const char selbordercolor[] = "#005577";
+
+            static const char *colors[][3] = { [SchemeNorm] = { normfgcoolr, normbgcoolr, normbordercolor }, [SchemeSel] = { selfgcolor, selbgcolor, selbordercolor}, };
+
+            #endif /*COLORS_WAL_DWM_H */ EOF
+
       - name: Build
         run: |
           make clean || true
