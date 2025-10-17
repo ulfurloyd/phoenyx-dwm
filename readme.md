@@ -11,20 +11,22 @@
 - configured entirely through modifying the source code, `dwm` is a blast to sift through, and teaches you tons about `c`.
 
 ## patches
-- cool_autostart
-    - implements autostart functionality controllable through `config.def.h`
-- fullgaps
-    - adds controllable gaps between windows
+- actualfullscsreen
+    - changes fullscreen behaviour into actual fullscreen instead of bartoggle+monocle
+- alpha
+    - allows statusbar and window borders to be transparent
 - bar-height-spacing
     - lets you set the height of the bar
+- cool_autostart
+    - implements autostart functionality controllable through `config.def.h`
+- focusmonmouse
+    - makes the mouse pointer follow focus change to a different output
+- fullgaps
+    - adds controllable gaps between windows
 - statusallmons
     - shows the status portion of the bar on all outputs instead of only the focused one
 - windowfollow
     - makes focus follow a window that's been sent to a different tag
-- focusmonmouse
-    - makes the mouse pointer follow focus change to a different output
-- actualfullscsreen
-    - changes fullscreen behaviour into actual fullscreen instead of bartoggle+monocle
 
 ## statusbar
 - standard `dwm` bar
