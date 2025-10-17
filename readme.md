@@ -2,6 +2,7 @@
 
 <h2 align="center">
     <img src="./.github/ulfurloyd.jpg" width="240" alt="ulfurloyd" />
+    <a href="https://github.com/ulfurloyd/wolf-dwm/actions/workflows/ci.yml"><img src="https://github.com/ulfurloyd/wolf-dwm/actions/workflows/ci.yml/badge.svg" alt="build dwm" /> </a>
 </h2>
 
 ![wolf-dwm](./.github/screenshot.png)
