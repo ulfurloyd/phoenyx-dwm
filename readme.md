@@ -4,6 +4,8 @@
     <img src="./.github/ulfurloyd.jpg" width="240" alt="ulfurloyd" />
 </h2>
 
+![wolf-dwm](./.github/screenshot.png)
+
 ## my build of dwm, the tiling wm that sucks less
 - `dwm` is an elegant, minimalist, enthusiast x11 window manager that sucks less.
 - configured entirely through modifying the source code, `dwm` is a blast to sift through, and teaches you tons about `c`.
