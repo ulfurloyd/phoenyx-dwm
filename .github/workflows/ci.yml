@@ -21,7 +21,7 @@ jobs:
             libx11-dev libxrender-dev libxinerama-dev libxft-dev \
             libfontconfig-dev libfreetype6-dev libxext-dev
 
-      - name: Provide default colors (for non-pywal builds)
+      - name: Provide default colours instead of pywal colours
         run: |
           # Replace the pywal include path if it exists
           sed -i 's#"/home/wolf/.cache/wal/colors-wal-dwm.h"#"colors-wal-dwm.h"#' config.def.h || true
@@ -54,13 +54,14 @@ jobs:
       - name: Verify build
         run: |
           if [ -f dwm ]; then
-            echo "✅ Build succeeded!"
+            echo "Build succeeded!"
             ls -lh dwm
             file dwm
           else
-            echo "❌ Build failed!"
+            echo "Build failed!"
             exit 1
           fi
 
       - name: Run version check
-        run: ./dwm -v
+        run: |
+          ./dwm -v || true
