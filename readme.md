@@ -34,3 +34,7 @@
 ## statusbar
 - standard `dwm` bar
 - using `dwmblocks-async` for status information
+
+## continuous integration
+- every push or PR triggers a github action.
+- it uses `make` to build the project, making substitutions for `pywal16` generated colours.
