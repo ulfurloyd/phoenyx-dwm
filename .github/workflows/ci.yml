@@ -63,4 +63,4 @@ jobs:
           fi
 
       - name: Run version check
-          run: ./dwm -v
+        run: ./dwm -v
