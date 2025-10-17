@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,30 +21,46 @@ jobs:
             libx11-dev libxrender-dev libxinerama-dev libxft-dev \
             libfontconfig-dev libfreetype6-dev libxext-dev
 
-      - name: Provide default colours that don't depend on pywal
+      - name: Provide default colors (for non-pywal builds)
         run: |
-          sed -i 's#"/home/wolf/.cache/wal/colors-wal-dwm.h"#"colors-wal-dwm.h"#' config.def.h
+          # Replace the pywal include path if it exists
+          sed -i 's#"/home/wolf/.cache/wal/colors-wal-dwm.h"#"colors-wal-dwm.h"#' config.def.h || true
+
           cat > colors-wal-dwm.h <<'EOF'
-            #ifndef COLORS_WAL_DWM_H
-            #define COLORS_WAL_DWM_H
+#ifndef COLORS_WAL_DWM_H
+#define COLORS_WAL_DWM_H
 
-            static const char normfgcolor[] = "#bbbbbb";
-            static const char normbgcolor[] = "#222222";
-            static const char normbordercolor[] = "#444444";
+static const char normfgcolor[]     = "#bbbbbb";
+static const char normbgcolor[]     = "#222222";
+static const char normbordercolor[] = "#444444";
 
-            static const char selfgcolor[] = "#eeeeee";
-            static const char selbgcolor[] = "#005577";
-            static const char selbordercolor[] = "#005577";
+static const char selfgcolor[]      = "#eeeeee";
+static const char selbgcolor[]      = "#005577";
+static const char selbordercolor[]  = "#005577";
 
-            static const char *colors[][3] = { [SchemeNorm] = { normfgcoolr, normbgcoolr, normbordercolor }, [SchemeSel] = { selfgcolor, selbgcolor, selbordercolor}, };
+static const char *colors[][3] = {
+    [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+    [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor },
+};
 
-            #endif /*COLORS_WAL_DWM_H */ EOF
+#endif /* COLORS_WAL_DWM_H */
+EOF
 
-      - name: Build
+      - name: Build dwm
         run: |
           make clean || true
-          make -j$(nproc)
+          make -j"$(nproc)"
 
-      - name: Show built binary (if present)
+      - name: Verify build
         run: |
-          if [ -f dwm ]; then ls -lh dwm; file dwm || true; fi
+          if [ -f dwm ]; then
+            echo "✅ Build succeeded!"
+            ls -lh dwm
+            file dwm
+          else
+            echo "❌ Build failed!"
+            exit 1
+          fi
+
+      - name: Run version check
+          run: ./dwm -v
