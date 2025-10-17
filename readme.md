@@ -23,6 +23,8 @@
     - makes the mouse pointer follow focus change to a different output
 - fullgaps
     - adds controllable gaps between windows
+- hide_vacant_tags
+    - hides the tags that don't have a window from the bar
 - statusallmons
     - shows the status portion of the bar on all outputs instead of only the focused one
 - windowfollow
