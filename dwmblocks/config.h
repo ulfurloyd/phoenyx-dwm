@@ -20,6 +20,6 @@
 #define BLOCKS(X)             \
     X("", "~/Dev/dwl/someblocks/scripts/weather", 300, 0) \
     X("", "~/Dev/dwl/someblocks/scripts/volume", 1, 10) \
-    X("", "date '+%b %d (%a) %I:%M%p'", 1, 10)
+    X("", "date '+%b %d (%a) %R:%S'", 1, 10)
 
 #endif  // CONFIG_H
