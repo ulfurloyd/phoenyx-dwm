@@ -1,0 +1,30 @@
+name: CI - build dwm
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential pkg-config \
+            libx11-dev libxrender-dev libxinerama-dev libxft-dev \
+            libfontconfig-dev libfreetype6-dev libxext-dev
+
+      - name: Build
+        run: |
+          make clean || true
+          make -j$(nproc)
+
+      - name: Show built binary (if present)
+        run: |
+          if [ -f dwm ]; then ls -lh dwm; file dwm || true; fi
