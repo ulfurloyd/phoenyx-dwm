@@ -12,27 +12,27 @@
 - configured entirely through modifying the source code, `dwm` is a blast to sift through, and teaches you tons about `c`.
 
 ## patches
-- actualfullscsreen
+- [actualfullscsreen](https://dwm.suckless.org/patches/actualfullscreen/)
     - changes fullscreen behaviour into actual fullscreen instead of bartoggle+monocle
-- alpha
+- [alpha](https://dwm.suckless.org/patches/alpha/)
     - allows statusbar and window borders to be transparent
-- bar-height-spacing
+- [bar-height-spacing](https://dwm.suckless.org/patches/bar_height/)
     - lets you set the height of the bar
-- barpadding
+- [barpadding](https://dwm.suckless.org/patches/barpadding/)
     - adds padding around the edges of the bar
-- cool_autostart
+- [cool_autostart](https://dwm.suckless.org/patches/cool_autostart/)
     - implements autostart functionality controllable through `config.def.h`
-- focusmonmouse
+- [focusmonmouse](https://dwm.suckless.org/patches/focusmonmouse/)
     - makes the mouse pointer follow focus change to a different output
-- fullgaps
+- [fullgaps](https://dwm.suckless.org/patches/fullgaps/)
     - adds controllable gaps between windows
-- hide_vacant_tags
+- [hide_vacant_tags](https://dwm.suckless.org/patches/hide_vacant_tags/)
     - hides the tags that don't have a window from the bar
-- restartsig
+- [restartsig](https://dwm.suckless.org/patches/restartsig/)
     - adds a keybinding to restart dwm inplace
-- statusallmons
+- [statusallmons](https://dwm.suckless.org/patches/statusallmons/)
     - shows the status portion of the bar on all outputs instead of only the focused one
-- windowfollow
+- [windowfollow](https://dwm.suckless.org/patches/windowfollow/)
     - makes focus follow a window that's been sent to a different tag
 
 ## statusbar
