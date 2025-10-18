@@ -18,6 +18,8 @@
     - allows statusbar and window borders to be transparent
 - bar-height-spacing
     - lets you set the height of the bar
+- barpadding
+    - adds padding around the edges of the bar
 - cool_autostart
     - implements autostart functionality controllable through `config.def.h`
 - focusmonmouse
@@ -26,6 +28,8 @@
     - adds controllable gaps between windows
 - hide_vacant_tags
     - hides the tags that don't have a window from the bar
+- restartsig
+    - adds a keybinding to restart dwm inplace
 - statusallmons
     - shows the status portion of the bar on all outputs instead of only the focused one
 - windowfollow
