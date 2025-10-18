@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 #include "/home/wolf/.cache/wal/colors-wal-dwm.h"
+#include "exitdwm.c"
 
 /* appearance */
 static const unsigned int borderpx    = 1;        /* border pixel of windows */
@@ -11,8 +12,8 @@ static const int          topbar      = 1;        /* 0 means bottom bar */
 static const int          vertpad     = 10;       /* vertical padding of bar */
 static const int          sidepad     = 10;       /* horizontal padding of bar */
 static const int          user_bh     = 8;        /* 2 is the default spacing around the bar's font */
-static const char         *fonts[]    = { "Fira Code Nerd Font Mono:size=12" };
-static const char         dmenufont[] = "Fira Code Nerd Font Mono:size=12";
+static const char         *fonts[]    = { "FiraCode nerd Font Mono:size=12" };
+static const char         dmenufont[] = "FiraCode nerd Font Mono:size=12";
 static unsigned int baralpha        = 0x00;
 static unsigned int borderalpha     = OPAQUE;
 
@@ -70,7 +71,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char       dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "dmenu_run", NULL };
+static const char *dmenudrun[] = { "j4-dmenu-desktop", "--dmenu=dmenu", NULL };
 static const char *rofirun[]  = { "rofi", "-show", "run", NULL };
 static const char *rofidrun[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
@@ -78,8 +81,8 @@ static const char *scrotcmd[] = { "scrot", "/home/wolf/Pictures/Screenshots/%Y_%
 
 static const Key keys[] = {
 	/* modifier                 key                function        argument */
-	{ MODKEY,                   XK_space,          spawn,          {.v = rofidrun } },
-	{ MODKEY|ShiftMask,         XK_space,          spawn,          {.v = rofirun } },
+	{ MODKEY,                   XK_space,          spawn,          {.v = dmenudrun } },
+	{ MODKEY|ShiftMask,         XK_space,          spawn,          {.v = dmenucmd} },
 	{ MODKEY,                   XK_Return,         spawn,          {.v = termcmd } },
 	{ MODKEY,                   XK_b,              togglebar,      {0} },
 	{ MODKEY,                   XK_n,              togglefollow,   {0} },
@@ -118,6 +121,7 @@ static const Key keys[] = {
 	TAGKEYS(                    XK_9,                              8)
 	{ MODKEY|ShiftMask,         XK_q,              quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,          quit,           {1} }, 
+    { MODKEY|ShiftMask,         XK_p,              exitdwm,        {0} },
 };
 
 /* button definitions */
