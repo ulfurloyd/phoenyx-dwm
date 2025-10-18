@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#define SESSION_FILE "/tmp/dwm-session"
+
 #include "/home/wolf/.cache/wal/colors-wal-dwm.h"
 #include "exitdwm.c"
 

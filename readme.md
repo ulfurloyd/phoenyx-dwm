@@ -30,6 +30,8 @@
     - hides the tags that don't have a window from the bar
 - [restartsig](https://dwm.suckless.org/patches/restartsig/)
     - adds a keybinding to restart dwm inplace
+- [restoreafterrestart](https://dwm.suckless.org/patches/restoreafterrestart/)
+    - restores windows to their previous tags after a dwm restart
 - [statusallmons](https://dwm.suckless.org/patches/statusallmons/)
     - shows the status portion of the bar on all outputs instead of only the focused one
 - [windowfollow](https://dwm.suckless.org/patches/windowfollow/)
