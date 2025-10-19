@@ -22,6 +22,8 @@
     - adds padding around the edges of the bar
 - [cool_autostart](https://dwm.suckless.org/patches/cool_autostart/)
     - implements autostart functionality controllable through `config.def.h`
+- [exitmenu](https://dwm.suckless.org/patches/exitmenu/)
+    - adds a dmenu-driven power menu
 - [focusmonmouse](https://dwm.suckless.org/patches/focusmonmouse/)
     - makes the mouse pointer follow focus change to a different output
 - [fullgaps](https://dwm.suckless.org/patches/fullgaps/)
