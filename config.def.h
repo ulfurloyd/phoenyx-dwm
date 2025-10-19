@@ -20,7 +20,7 @@ static const char         *fonts[]    = {
     "Symbols Nerd Font:size=14",
     "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true"
 };
-static const char         dmenufont[] = "FiraCode nerd Font Mono:size=12";
+static const char   dmenufont[]     = "FiraCode nerd Font Mono:size=12";
 static unsigned int baralpha        = 0x00;
 static unsigned int borderalpha     = OPAQUE;
 
@@ -52,11 +52,11 @@ static const Rule rules[] = {
 #define WFDEFAULT WFACTIVE
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int   nmaster     = 1;    /* number of clients in master area */
-static const int   resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const float mfact          = 0.55; /* factor of master area size [0.05..0.95] */
+static const int   nmaster        = 1;    /* number of clients in master area */
+static const int   resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
 static const int   lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-static const int   refreshrate = 120;  /* refresh rate (per second) for client move/resize */
+static const int   refreshrate    = 120;  /* refresh rate (per second) for client move/resize */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -77,58 +77,60 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char       dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *dmenucmd[] = { "dmenu_run", NULL };
+static       char  dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[]  = { "dmenu_run", NULL };
 static const char *dmenudrun[] = { "j4-dmenu-desktop", "--dmenu=dmenu", NULL };
-static const char *rofirun[]  = { "rofi", "-show", "run", NULL };
-static const char *rofidrun[] = { "rofi", "-show", "drun", NULL };
-static const char *termcmd[]  = { "kitty", NULL };
-static const char *scrotcmd[] = { "scrot", "/home/wolf/Pictures/Screenshots/%Y_%m-%d_%H:%M:%S.png", "-s", NULL };
+static const char *rofirun[]   = { "rofi", "-show", "run", NULL };
+static const char *rofidrun[]  = { "rofi", "-show", "drun", NULL };
+static const char *termcmd[]   = { "kitty", NULL };
+static const char *scrotcmd[]  = { "scrot", "/home/wolf/Pictures/Screenshots/%Y_%m-%d_%H:%M:%S.png", "-s", NULL };
 
 static const Key keys[] = {
-	/* modifier                 key                function        argument */
-	{ MODKEY,                   XK_space,          spawn,          {.v = dmenudrun } },
-	{ MODKEY|ShiftMask,         XK_space,          spawn,          {.v = dmenucmd} },
-	{ MODKEY,                   XK_Return,         spawn,          {.v = termcmd } },
-	{ MODKEY,                   XK_b,              togglebar,      {0} },
-	{ MODKEY,                   XK_n,              togglefollow,   {0} },
-	{ MODKEY,                   XK_j,              focusstack,     {.i = +1 } },
-	{ MODKEY,                   XK_k,              focusstack,     {.i = -1 } },
-	{ MODKEY,                   XK_i,              incnmaster,     {.i = +1 } },
-	{ MODKEY,                   XK_d,              incnmaster,     {.i = -1 } },
-	{ MODKEY,                   XK_h,              setmfact,       {.f = -0.05} },
-	{ MODKEY,                   XK_l,              setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,         XK_Return,         zoom,           {0} },
-	{ MODKEY,                   XK_Tab,            view,           {0} },
-	{ MODKEY,                   XK_w,              killclient,     {0} },
-	{ MODKEY,                   XK_t,              togglefloating, {0} },
-	{ MODKEY,                   XK_f,              togglefullscr,  {0} },
-	{ MODKEY,                   XK_0,              view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,         XK_0,              tag,            {.ui = ~0 } },
-	{ MODKEY,                   XK_bracketleft,    focusmon,       {.i = -1 } },
-	{ MODKEY,                   XK_bracketright,   focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,         XK_bracketleft,    tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,         XK_bracketright,   tagmon,         {.i = +1 } },
-	{ MODKEY|ControlMask,       XK_minus,          setgaps,        {.i = -1 } },
-	{ MODKEY|ControlMask,       XK_equal,          setgaps,        {.i = +1 } },
-    { MODKEY,                   XK_F12,            spawn,          {.v = scrotcmd } },
-	{ MODKEY|ControlMask|ShiftMask,                XK_equal,       setgaps,        {.i = 0  } },
-    { MODKEY,                   XK_equal,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+12 dwmblocks") },
-    { MODKEY,                   XK_minus,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+12 dwmblocks") },
-	{ MODKEY,                   XK_m,              spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+12 dwmblocks") },
-	TAGKEYS(                    XK_1,                              0)
-	TAGKEYS(                    XK_2,                              1)
-	TAGKEYS(                    XK_3,                              2)
-	TAGKEYS(                    XK_4,                              3)
-	TAGKEYS(                    XK_5,                              4)
-	TAGKEYS(                    XK_6,                              5)
-	TAGKEYS(                    XK_7,                              6)
-	TAGKEYS(                    XK_8,                              7)
-	TAGKEYS(                    XK_9,                              8)
-	{ MODKEY|ShiftMask,         XK_q,              quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,          quit,           {1} }, 
-    { MODKEY|ShiftMask,         XK_p,              exitdwm,        {0} },
+	/* modifier                       key                function        argument */
+	{ MODKEY,                         XK_space,          spawn,          {.v = dmenudrun } },
+	{ MODKEY|ShiftMask,               XK_space,          spawn,          {.v = dmenucmd} },
+	{ MODKEY,                         XK_Return,         spawn,          {.v = termcmd } },
+	{ MODKEY,                         XK_b,              togglebar,      {0} },
+	{ MODKEY,                         XK_n,              togglefollow,   {0} },
+	{ MODKEY,                         XK_j,              focusstack,     {.i = +1 } },
+	{ MODKEY,                         XK_k,              focusstack,     {.i = -1 } },
+	{ MODKEY,                         XK_i,              incnmaster,     {.i = +1 } },
+	{ MODKEY,                         XK_d,              incnmaster,     {.i = -1 } },
+	{ MODKEY,                         XK_h,              setmfact,       {.f = -0.05} },
+	{ MODKEY,                         XK_l,              setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,               XK_Return,         zoom,           {0} },
+	{ MODKEY,                         XK_Tab,            view,           {0} },
+	{ MODKEY,                         XK_w,              killclient,     {0} },
+	{ MODKEY,                         XK_t,              togglefloating, {0} },
+	{ MODKEY,                         XK_f,              togglefullscr,  {0} },
+	{ MODKEY,                         XK_0,              view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,               XK_0,              tag,            {.ui = ~0 } },
+	{ MODKEY,                         XK_bracketleft,    focusmon,       {.i = -1 } },
+	{ MODKEY,                         XK_bracketright,   focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,               XK_bracketleft,    tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,               XK_bracketright,   tagmon,         {.i = +1 } },
+	{ MODKEY|ControlMask,             XK_minus,          setgaps,        {.i = -1 } },
+	{ MODKEY|ControlMask,             XK_equal,          setgaps,        {.i = +1 } },
+    { MODKEY,                         XK_F12,            spawn,          {.v = scrotcmd } },
+	{ MODKEY|ControlMask|ShiftMask,   XK_equal,          setgaps,        {.i = 0  } },
+    { MODKEY,                         XK_equal,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+12 dwmblocks") },
+    { MODKEY,                         XK_minus,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+12 dwmblocks") },
+	{ MODKEY,                         XK_m,              spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+12 dwmblocks") },
+    { MODKEY,                         XK_comma,          spawn,          SHCMD("playerctl previous") },
+    { MODKEY,                         XK_period,         spawn,          SHCMD("playerctl next") },
+    { MODKEY,                         XK_p,              spawn,          SHCMD("playerctl play-pause") },
+	TAGKEYS(                          XK_1,                              0)
+	TAGKEYS(                          XK_2,                              1)
+	TAGKEYS(                          XK_3,                              2)
+	TAGKEYS(                          XK_4,                              3)
+	TAGKEYS(                          XK_5,                              4)
+	TAGKEYS(                          XK_6,                              5)
+	TAGKEYS(                          XK_7,                              6)
+	TAGKEYS(                          XK_8,                              7)
+	TAGKEYS(                          XK_9,                              8)
+	{ MODKEY|ShiftMask,               XK_q,              quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask,   XK_q,              quit,           {1} }, 
+    { MODKEY|ShiftMask,               XK_p,              exitdwm,        {0} },
 };
 
 /* button definitions */
