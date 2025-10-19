@@ -8,7 +8,7 @@
 #define MAX_BLOCK_OUTPUT_LENGTH 45
 
 // Control whether blocks are clickable.
-#define CLICKABLE_BLOCKS 1
+#define CLICKABLE_BLOCKS 0
 
 // Control whether a leading delimiter should be prepended to the status.
 #define LEADING_DELIMITER 0
@@ -19,7 +19,7 @@
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 #define BLOCKS(X)             \
     X("", "blocks-musicplaying", 1, 0) \
-    X("", "~/Dev/dwl/someblocks/scripts/volume", 1, 10) \
+    X("", "blocks-volume", 10, 12) \
     X("", "blocks-systemstats", 30, 0) \
     X("", "blocks-disks", 600, 0) \
     X("", "~/Dev/dwl/someblocks/scripts/weather", 300, 0) \

@@ -14,7 +14,12 @@ static const int          topbar      = 1;        /* 0 means bottom bar */
 static const int          vertpad     = 10;       /* vertical padding of bar */
 static const int          sidepad     = 10;       /* horizontal padding of bar */
 static const int          user_bh     = 8;        /* 2 is the default spacing around the bar's font */
-static const char         *fonts[]    = { "FiraCode nerd Font Mono:size=14" };
+static const char         *fonts[]    = {
+    "Hack Nerd Font:size=14",
+    "FiraCode Nerd Font:size=14",
+    "Symbols Nerd Font:size=14",
+    "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true"
+};
 static const char         dmenufont[] = "FiraCode nerd Font Mono:size=12";
 static unsigned int baralpha        = 0x00;
 static unsigned int borderalpha     = OPAQUE;
@@ -109,9 +114,9 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,       XK_equal,          setgaps,        {.i = +1 } },
     { MODKEY,                   XK_F12,            spawn,          {.v = scrotcmd } },
 	{ MODKEY|ControlMask|ShiftMask,                XK_equal,       setgaps,        {.i = 0  } },
-    { MODKEY,                   XK_equal,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
-    { MODKEY,                   XK_minus,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
-	{ MODKEY,                   XK_m,              spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+    { MODKEY,                   XK_equal,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+12 dwmblocks") },
+    { MODKEY,                   XK_minus,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+12 dwmblocks") },
+	{ MODKEY,                   XK_m,              spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+12 dwmblocks") },
 	TAGKEYS(                    XK_1,                              0)
 	TAGKEYS(                    XK_2,                              1)
 	TAGKEYS(                    XK_3,                              2)
