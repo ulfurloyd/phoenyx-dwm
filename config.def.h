@@ -119,6 +119,7 @@ static const Key keys[] = {
     { MODKEY,                         XK_comma,          spawn,          SHCMD("playerctl previous") },
     { MODKEY,                         XK_period,         spawn,          SHCMD("playerctl next") },
     { MODKEY,                         XK_p,              spawn,          SHCMD("playerctl play-pause") },
+    { MODKEY|ControlMask,             XK_p,              spawn,          SHCMD("passmenu") },
 	TAGKEYS(                          XK_1,                              0)
 	TAGKEYS(                          XK_2,                              1)
 	TAGKEYS(                          XK_3,                              2)
