@@ -36,6 +36,8 @@
     - restores windows to their previous tags after a dwm restart
 - [statusallmons](https://dwm.suckless.org/patches/statusallmons/)
     - shows the status portion of the bar on all outputs instead of only the focused one
+- [taglabels](http://dwm.suckless.org/patches/taglabels/)
+    - shows the windowclass for the master window on all tags alongside tag number in the bar
 - [windowfollow](https://dwm.suckless.org/patches/windowfollow/)
     - makes focus follow a window that's been sent to a different tag
 
