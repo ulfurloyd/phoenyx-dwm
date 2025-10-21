@@ -770,9 +770,9 @@ drawbar(Monitor *m)
 		return;
 
 	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon || 1) { /* status is only drawn on selected monitor */
+	if (m == selmon || 1) {
 		drw_setscheme(drw, scheme[SchemeNorm]);
-		tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
+		tw = TEXTW(stext) - lrpad + 2;
 		drw_text(drw, m->ww - tw - 2 * sp, 0, tw, bh, 0, stext, 0);
 	}
 
@@ -792,21 +792,35 @@ drawbar(Monitor *m)
 					masterclientontag[i][0] = tolower(masterclientontag[i][0]);
 			}
 	}
+
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
-		/* Do not draw vacant tags */
-		if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+		if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
 			continue;
+
 		if (masterclientontag[i])
 			snprintf(tagdisp, 64, ptagf, tags[i], masterclientontag[i]);
 		else
 			snprintf(tagdisp, 64, etagf, tags[i]);
 		masterclientontag[i] = tagdisp;
+
 		tagw[i] = w = TEXTW(masterclientontag[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, masterclientontag[i], urg & 1 << i);
+
+		/* Underline only selected tag (like your image) */
+		if (m->tagset[m->seltags] & 1 << i) {
+			drw_rect(drw,
+				x + ulinepad,
+				bh - ulinestroke - ulinevoffset,
+				w - (ulinepad * 2),
+				ulinestroke,
+				1, 0);
+		}
+
 		x += w;
 	}
+
 	w = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
@@ -825,6 +839,7 @@ drawbar(Monitor *m)
 			drw_rect(drw, x, 0, w - 2 * sp, bh, 1, 1);
 		}
 	}
+
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
 }
 
