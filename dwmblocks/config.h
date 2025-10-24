@@ -18,7 +18,7 @@
 
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 #define BLOCKS(X)             \
-    X("", "blocks-musicplaying", 1, 0) \
+    X("", "blocks-musicplaying", 1, 13) \
     X("", "blocks-volume", 10, 12) \
     X("", "blocks-systemstats", 30, 0) \
     X("", "blocks-disks", 600, 0) \
