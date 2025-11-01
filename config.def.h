@@ -15,10 +15,10 @@ static const int          vertpad     = 10;       /* vertical padding of bar */
 static const int          sidepad     = 10;       /* horizontal padding of bar */
 static const int          user_bh     = 8;        /* 2 is the default spacing around the bar's font */
 static const char         *fonts[]    = {
-    "Hack Nerd Font:size=14",
-    "FiraCode Nerd Font:size=14",
-    "Symbols Nerd Font:size=14",
-    "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true"
+    "Hack Nerd Font:size=12",
+    "FiraCode Nerd Font:size=12",
+    "Symbols Nerd Font:size=12",
+    "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true"
 };
 static const char   dmenufont[]     = "FiraCode nerd Font Mono:size=12";
 static unsigned int baralpha        = 0x00;
