@@ -123,9 +123,9 @@ static const Key keys[] = {
     { MODKEY,                         XK_equal,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+12 dwmblocks") },
     { MODKEY,                         XK_minus,          spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY,                         XK_m,              spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+12 dwmblocks") },
-    { MODKEY,                         XK_comma,          spawn,          SHCMD("playerctl previous; pkill -RTMIN+13 dwmblocks") },
-    { MODKEY,                         XK_period,         spawn,          SHCMD("playerctl next; pkill -RTMIN+13 dwmblocks") },
-    { MODKEY,                         XK_p,              spawn,          SHCMD("playerctl play-pause; pkill -RTMIN+13 dwmblocks") },
+    { MODKEY,                         XK_comma,          spawn,          SHCMD("playerctl --player=mpd previous; pkill -RTMIN+13 dwmblocks") },
+    { MODKEY,                         XK_period,         spawn,          SHCMD("playerctl --player=mpd next; pkill -RTMIN+13 dwmblocks") },
+    { MODKEY,                         XK_p,              spawn,          SHCMD("playerctl --player=mpd play-pause; pkill -RTMIN+13 dwmblocks") },
     { MODKEY|ControlMask,             XK_p,              spawn,          SHCMD("passmenu") },
 	TAGKEYS(                          XK_1,                              0)
 	TAGKEYS(                          XK_2,                              1)
